@@ -1,7 +1,7 @@
 # How to run Backend code
 
 1. Change values of /database/db.ts with your own db credentials
-2. Create table for restaurants
+2. Create table for restaurants <br/>
 CREATE TABLE restaurants(
 id SERIAL PRIMARY KEY,
 name VARCHAR(50) NOT NULL,
@@ -15,7 +15,7 @@ branch INTEGER NOT NULL,
 phone VARCHAR NOT NULL,
 location VARCHAR;
 ); 
-3. Create another table for user
+3. Create another table for user <br/>
 CREATE TABLE costumers(
 id SERIAL PRIMARY KEY,
 username VARCHAR(50) NOT NULL,
@@ -26,5 +26,5 @@ admin boolean DEFAULT false);
 4. npm run dev
 
 # How to create admin account
-1. set value of admin to true
+1. set value of admin to true <br/>
 UPDATE costumers SET admin = true WHERE email = 'youremail@gmail.com';
