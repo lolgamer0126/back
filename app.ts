@@ -47,11 +47,11 @@ passport.use(new GoogleOauth({
 ));
 app.use('/auth', authRouter);
 app.use('/restaurant', restaurantRouter);
-app.get('/', function(req, res) {
-  const userID = req.headers.cookie?.substring(5, 41)
-  // console.log(userID);
-  res.json({message: "atleast it's working"});
-});
+// app.get('/', function(req, res) {
+//   const userID = req.headers.cookie?.substring(5, 41)
+//   // console.log(userID);
+//   res.json({message: "atleast it's working"});
+// });
 
 passport.serializeUser(function(user:Express.User, cb) {
   cb(null, user);
