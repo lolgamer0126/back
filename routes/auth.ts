@@ -39,14 +39,14 @@ router.get('/google/callback',
         `SELECT uniqueID FROM costumers WHERE email='${email}'`
       )
       if(check.rowCount){
-        res.cookie('user', check.rows[0].uniqueid).redirect('http://localhost:3000/')
+        res.cookie('user', check.rows[0].uniqueid).redirect('http://ochko.website:3000/')
       }
       else{
         const uniqueID = uuidv4()
         const resp = await pool.query(
           `INSERT INTO costumers (username, email, photo, uniqueID) VALUES ('${username}', '${email}', '${photo}', '${uniqueID}')`
         );
-        res.cookie('user', uniqueID).redirect('http://localhost:3000/');
+        res.cookie('user', uniqueID).redirect('http://ochko.website:3000/');
       }
     }
     catch(error){

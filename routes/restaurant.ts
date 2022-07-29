@@ -112,8 +112,7 @@ router.get('/:id',async (req,res)=>{
 })
 
 router.post('/create', async (req, res)=>{
-    const {name, email, photo, tags, branch, description, phone,x,y} = req.body;
-    const location = x+';'+y;
+    const {name, email, photo, tags, branch, description, phone, location} = req.body;
     const uniqueid = uuidv4();
     try{
         const check = await pool.query(`select * from costumers where uniqueid = '${req.body.cookie}'`)

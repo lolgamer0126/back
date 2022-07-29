@@ -23,7 +23,8 @@ app.use(body_parser_1.default.urlencoded({ extended: false }));
 app.use(body_parser_1.default.json());
 app.use((0, cookie_parser_1.default)());
 app.use((0, cors_1.default)({
-    credentials: true
+    credentials: true,
+    origin: '*'
 }));
 app.use((0, express_session_1.default)({
     resave: false,
@@ -39,7 +40,7 @@ app.use(passport_1.default.session());
 passport_1.default.use(new GoogleOauth({
     clientID: GOOGLE_CLIENT_ID,
     clientSecret: GOOGLE_CLIENT_SECRET,
-    callbackURL: "http://localhost:8000/auth/google/callback"
+    callbackURL: "http://ochko.website:8000/auth/google/callback"
 }, function (accessToken, refreshToken, profile, done) {
     const userProfile = profile;
     return done(null, userProfile);
@@ -53,5 +54,5 @@ passport_1.default.deserializeUser(function (obj, cb) {
     cb(null, obj);
 });
 app.listen(port, () => {
-    console.log(`⚡️[server]: Server is running at http://localhost:${port}`);
+    console.log(`⚡️[server]: Server is running at http://ochko.website:${port}`);
 });
