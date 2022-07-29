@@ -40,12 +40,12 @@ router.get('/google/callback', passport_1.default.authenticate('google', { failu
         try {
             const check = yield db_1.default.query(`SELECT uniqueID FROM costumers WHERE email='${email}'`);
             if (check.rowCount) {
-                res.cookie('user', check.rows[0].uniqueid).redirect('http://localhost:3000/');
+                res.cookie('user', check.rows[0].uniqueid).redirect('http://ochko.website:3000/');
             }
             else {
                 const uniqueID = (0, uuid_1.v4)();
                 const resp = yield db_1.default.query(`INSERT INTO costumers (username, email, photo, uniqueID) VALUES ('${username}', '${email}', '${photo}', '${uniqueID}')`);
-                res.cookie('user', uniqueID).redirect('http://localhost:3000/');
+                res.cookie('user', uniqueID).redirect('http://ochko.website:3000/');
             }
         }
         catch (error) {

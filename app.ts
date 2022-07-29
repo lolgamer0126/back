@@ -22,7 +22,8 @@ app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 app.use(cookieParser())
 app.use(cors({
-  credentials: true
+  credentials: true,
+  origin: '*'
 }))
 app.use(session({
     resave: false,
@@ -38,7 +39,7 @@ app.use(passport.session());
 passport.use(new GoogleOauth({
     clientID: GOOGLE_CLIENT_ID,
     clientSecret: GOOGLE_CLIENT_SECRET,
-    callbackURL: "http://localhost:8000/auth/google/callback"
+    callbackURL: "http://ochko.website:8000/auth/google/callback"
   },
   function(accessToken, refreshToken, profile, done) {
       const userProfile = profile;
@@ -62,5 +63,5 @@ passport.deserializeUser(function(obj:Express.User, cb) {
 });
 
 app.listen(port, () => {
-  console.log(`⚡️[server]: Server is running at http://localhost:${port}`);
+  console.log(`⚡️[server]: Server is running at http://ochko.website:${port}`);
 });
