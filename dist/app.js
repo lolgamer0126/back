@@ -47,12 +47,11 @@ passport_1.default.use(new GoogleOauth({
 }));
 app.use('/auth', auth_1.default);
 app.use('/restaurant', restaurant_1.default);
-app.get('/', function (req, res) {
-    var _a;
-    const userID = (_a = req.headers.cookie) === null || _a === void 0 ? void 0 : _a.substring(5, 41);
-    // console.log(userID);
-    res.json({ message: "atleast it's working" });
-});
+// app.get('/', function(req, res) {
+//   const userID = req.headers.cookie?.substring(5, 41)
+//   // console.log(userID);
+//   res.json({message: "atleast it's working"});
+// });
 passport_1.default.serializeUser(function (user, cb) {
     cb(null, user);
 });
